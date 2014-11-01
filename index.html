@@ -25,7 +25,7 @@
           <li><a class="buttons github" href="https://github.com/goravbhootra/rails_workshop">View On GitHub</a></li>
         </ul>
 
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/goravbhootra">Gorav Bhootra. Skype: goravbhootra</a></p>
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/goravbhootra">Gorav Bhootra</a></p>
 
 
       </header>
@@ -42,14 +42,44 @@
 </pre>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Devise and UI (Bootstrap) - covered under branch devise</h3>
+<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Devise and UI (Bootstrap) - covered under branch <em>devise_ui</em></h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>This section covers two gems - <em>devise and bootstrap-sass</em></p>
 
 <h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Routes and Migrations</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<h4>Routing Concerns</h4>
+  <pre><code>
+    resources :messages do
+      resources :comments
+      resources :categories
+      resources :tags
+    end
+
+    resources :posts do
+      resources :comments
+      resources :categories
+      resources :tags
+    end
+
+    resources :items do
+      resources :comments
+      resources :categories
+      resources :tags
+    end
+    <h4 style="margin:0;">Instead of above, we can do the following:</h4>
+    concern :sociable do
+      resources :comments
+      resources :categories
+      resources :tags
+    end
+
+    resources :messages, concerns: sociable
+    resources :posts, concerns: sociable
+    resources :items, concerns: sociable
+
+  </code></pre>
 
 <h3>
 <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
