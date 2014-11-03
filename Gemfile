@@ -44,7 +44,7 @@ group :development, :test do
   gem 'spring'
 end
 
-# gem 'bootstrap-sass'
+gem 'bootstrap-sass'
 gem 'devise'
 group :development do
   gem 'better_errors'
